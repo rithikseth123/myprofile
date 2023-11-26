@@ -42,6 +42,7 @@ To access the project, use the following credentials (A sample Login):
 ## Video Submission
 
 Please refer to the attached video file for a demonstration of every functionality required in the project.
+(link: https://github.com/rithikseth123/myprofile/blob/master/tutorial.mp4)
 
 ---
 
