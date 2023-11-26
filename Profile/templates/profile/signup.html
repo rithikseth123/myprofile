@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Register
+{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "profile/signup.css" %}">
+{% endblock css %}
+{% block content %}
+    <form action="{% url "signup" %}"
+          method="POST"
+          enctype="multipart/form-data"
+          class="form-container">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+{% endblock content %}

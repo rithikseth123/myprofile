@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Welcome
+{% endblock title %}
+{% block css %}
+    <link rel="stylesheet"  href="{% static "profile/index.css" %}">
+{% endblock css %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container user-welcome">
+            <h2>
+                Hello! <span id="username">{{ user.username | title }}</span>
+            </h2>
+            <div class="user-details">
+                {% if user.profile_picture %}
+                    <img id="profile-picture"
+                         src="{{ user.profile_picture.url }}"
+                         alt="Profile Picture"
+                         width="100">
+                {% else %}
+                    <p>No profile picture available</p>
+                {% endif %}
+                <h3>User Details</h3>
+                <p class="user-detail">First Name: {{ user.first_name | title | default:"Not provided" }}</p>
+                <p class="user-detail">Last Name: {{ user.last_name | title | default:"Not provided" }}</p>
+                <p class="user-detail">Email: {{ user.email | default:"Not provided" }}</p>
+                <p class="user-detail">Address: {{ user.address_line1 | default:"Not provided" }}</p>
+                <p class="user-detail">City: {{ user.city | default:"Not provided" }}</p>
+                <p class="user-detail">State: {{ user.state | default:"Not provided" }}</p>
+                <p class="user-detail">Pincode: {{ user.pincode | default:"Not provided" }}</p>
+            </div>
+            <h3 id="thanks-message">Thanks For Joining!</h3>
+        </div>
+    {% else %}
+        <h1 class="indexh1">
+            Want To Join Us? <a href="{% url "login" %}">Login</a>
+        </h1>
+    {% endif %}
+{% endblock content %}

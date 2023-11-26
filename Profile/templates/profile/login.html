@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "profile/login.css" %}">
+{% endblock css %}
+{% block content %}
+    <form action="{% url "login" %}" method="POST" class="login-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="login-button">Login</button>
+        <h3 class="new-user-text">
+            New User? <a href="{% url "signup" %}" class="create-profile-link">Create Profile</a>
+        </h3>
+    </form>
+    {% if messages %}
+        <div class="alert alert-danger">
+            {% for message in messages %}<p>{{ message }}</p>{% endfor %}
+        </div>
+    {% endif %}
+{% endblock content %}
